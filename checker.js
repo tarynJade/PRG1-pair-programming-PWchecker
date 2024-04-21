@@ -61,14 +61,14 @@ function getPasswordFromUser() {
     fs.appendFileSync(outputFile, `${currentDateTime}\n`, "utf-8");
 
     const strength = getPasswordStrength(password);
-    console.log(`Password strength: ${strength}`);
+    // console.log(`Password strength: ${strength}`);
 
-    if (strength === "Strong") {
-        console.log("Your password is strong.");
-    } else {
-        console.log("Password does not meet the criteria. Please enter a different password.");
-        getPasswordFromUser();  
-    }
+    // if (strength === "Strong") {
+    //     console.log("Your password is strong.");
+    // } else {
+    //     console.log("Password does not meet the criteria. Please enter a different password.");
+    //     getPasswordFromUser();  
+    // }
 }
 
 // End of functions
@@ -76,6 +76,20 @@ function getPasswordFromUser() {
 const outputFile = "./checking_password_log.txt";
 
 // Enter code to read in the 25 most common passwords from the text file here.
+
+const inputFile = "./common_passwords.txt";
+const data = fs.readFileSync(inputFile, "utf-8");
+const lines = data.split(/\n/)
+const password = "password"
+
+console.log(lines)
+
+if(lines.includes(password)){
+  console.log("Your password is in the lines array")
+}else{
+  console.log("Not in the lines array")
+}
+
 getPasswordFromUser();
 
 
